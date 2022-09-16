@@ -1,7 +1,28 @@
 
 public class Recursion {
-    public static boolean checkPalindrome(String str, int start, int n) {
+    public static void printArr(int arr[]) {
+        for (int val : arr)
+            System.out.print(val + " ");
+        System.out.println();
+    }
 
+    public static void swap(int arr[], int i, int j) {
+        int temp = arr[i];
+        arr[i] = arr[j];
+        arr[j] = temp;
+    }
+
+    public static void bubbleSort(int arr[], int n) {
+        if (n == 0 || n == 1)
+            return;
+        for (int i = 0; i < n - 1; i++) {
+            if (arr[i] > arr[i + 1])
+                swap(arr, i, i + 1);
+        }
+        bubbleSort(arr, n - 1);
+    }
+
+    public static boolean checkPalindrome(String str, int start, int n) {
         if (str.length() / 2 > (n - 1 - start))
             return true;
 
@@ -93,10 +114,11 @@ public class Recursion {
     }
 
     public static void main(String[] args) {
-        String str = "macam";
-        int n = str.length();
+        int arr[] = { 4, 10, 115, 8, 3 };
+        int n = arr.length;
 
-        System.out.println(checkPalindrome(str, 0, n));
+        bubbleSort(arr, n);
+        printArr(arr);
 
     }
 }
