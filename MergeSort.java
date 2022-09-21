@@ -1,4 +1,3 @@
-import javax.swing.text.html.MinimalHTMLWriter;
 
 public class MergeSort {
 
