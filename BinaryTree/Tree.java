@@ -7,6 +7,8 @@ import java.util.Stack;
 
 
 public class Tree {
+
+    static Node root = null;
     private static class Node {
         int data;
         Node left , right;
@@ -24,8 +26,8 @@ public class Tree {
         int data = sc.nextInt();
 
         if(data == -1) return null;
+        
         root = new Node(data);
-
         System.out.println("Enter the data to insert in left " + data);
         root.left = buildTree(root.left);
 
@@ -33,6 +35,37 @@ public class Tree {
         root.right = buildTree(root.right);
 
         return root;
+    }
+
+    public static void buildTreeLevelOrder(){
+        Queue<Node> queue = new LinkedList<>();
+        System.out.println("Enter Data For root :");
+        int data = sc.nextInt();
+        root = new Node(data);
+        queue.offer(root);
+
+
+        while(!queue.isEmpty()){
+            Node temp = queue.poll();
+
+            System.out.println("Enter data for left node of " + temp.data);
+            int leftData = sc.nextInt();
+
+            if(leftData != -1){
+                temp.left = new Node(leftData);
+                queue.offer(temp.left);
+            }
+
+            System.out.println("Enter data for right node of " + temp.data);
+            int rightData = sc.nextInt();
+            if(rightData != -1){
+                temp.right = new Node(rightData);
+                queue.offer(temp.right);
+            }
+
+        }
+
+
     }
 
     public static void levelOrderTraversal(Node root){
@@ -141,15 +174,15 @@ public class Tree {
     }
 
     // 1 3 7 -1 -1 11 -1 -1 5 17 -1 -1 -1
-
+;
     public static void main(String[] args) {
-        Node root = null;
-        root = buildTree(root);
+        // root = buildTree(root);
+        // buildTreeLevelOrder();
         // levelOrderTraversal(root);
         // reverseLevelOrder(root);
         // inOrderTraversal(root);
         // preOrderTraversal(root);
-        postOrderTraversal(root);
+        // postOrderTraversal(root);
         // inOrderIterative(root);
         // preOrderIterative(root);
     }
